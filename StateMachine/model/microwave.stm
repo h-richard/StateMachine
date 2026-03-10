@@ -1,0 +1,43 @@
+StateMachine microwave {
+	states {
+		CompositeState closed {
+			states {
+				State c_off { 
+					Action "onEntry" { call turnOffLight() on "ext:business"; }
+				}
+				State baking { 
+					Action "onEntry" { call turnOnLight() on "ext:business"; call turnOnMagnetron() on "ext:business"; },
+					Action "onExit" { call turnOffMagnetron() on "ext:business"; }
+				}
+				InitialState init references c_off
+				HistoryState hist
+			}
+			starts with init
+			historyState hist
+		}
+		CompositeState open {
+			states {
+				State off {
+					Action "onEntry" { call turnOffLight() on "ext:business"; }
+				}
+				State paused
+				InitialState init references off
+			}
+			starts with init
+		}
+		InitialState init references closed
+	}
+	starts with init
+	events {
+		Event doorOpen,
+		Event doorClose,
+		Event power
+	}
+	transitions {
+		Transition from closed to open on doorOpen { Action "onTransition" { call openDoor() on "ext:business"; }},
+		Transition from open to closed on doorClose { Action "onTransition" { call closeDoor() on "ext:business"; }},
+		Transition from baking to paused on doorOpen { Action "onTransition" { call openDoor() on "ext:business"; }},
+		Transition from c_off to baking on power,
+		Transition from baking to c_off on power
+	}
+}

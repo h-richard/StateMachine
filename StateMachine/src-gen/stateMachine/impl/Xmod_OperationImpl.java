@@ -1,0 +1,733 @@
+/**
+ */
+package stateMachine.impl;
+
+import exceptions.Xmod_ExceptionContext;
+import exceptions.Xmod_UnknownNamespaceException;
+import exceptions.Xmod_ObjectNotFoundException;
+import exceptions.Xmod_MethodNotFoundException;
+import exceptions.Xmod_ParametersNotMatchingException;
+import exceptions.Xmod_ReturnTypeNotMatchingException;
+
+import static stateMachine.Xmod_ExceptionKind.*;
+
+import java.lang.reflect.InvocationTargetException;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import stateMachine.StateMachinePackage;
+import stateMachine.Xmod_Element;
+import stateMachine.Xmod_Exception;
+import stateMachine.Xmod_ExceptionKind;
+import stateMachine.Xmod_Operation;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Xmod Operation</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link StateMachine.impl.Xmod_OperationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link StateMachine.impl.Xmod_OperationImpl#getObjectTag <em>Object Tag</em>}</li>
+ *   <li>{@link StateMachine.impl.Xmod_OperationImpl#getParametersTag <em>Parameters Tag</em>}</li>
+ *   <li>{@link StateMachine.impl.Xmod_OperationImpl#getReturnTag <em>Return Tag</em>}</li>
+ *   <li>{@link StateMachine.impl.Xmod_OperationImpl#getExceptions <em>Exceptions</em>}</li>
+ * </ul>
+ *
+ * @generated NOT
+ */
+public class Xmod_OperationImpl extends MinimalEObjectImpl.Container implements Xmod_Operation {
+
+	private static final String JAVA_TAG = "java";
+	private static final String MODEL_TAG = "model";
+	private static final String EXTERNAL_TAG = "ext";
+	private static final String TAG_SEPARATOR = ":";
+
+	private Xmod_Exception EOK;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getObjectTag() <em>Object Tag</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObjectTag()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected static final String OBJECT_TAG_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getObjectTag() <em>Object Tag</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObjectTag()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected String objectTag = OBJECT_TAG_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getParametersTag() <em>Parameters Tag</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParametersTag()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected EList<String> parametersTag;
+
+	/**
+	 * The default value of the '{@link #getReturnTag() <em>Return Tag</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReturnTag()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected static final String RETURN_TAG_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getReturnTag() <em>Return Tag</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReturnTag()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected String returnTag = RETURN_TAG_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getExceptions() <em>Exceptions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExceptions()
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected EList<Xmod_Exception> exceptions;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected Xmod_OperationImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return StateMachinePackage.Literals.XMOD_OPERATION;
+	}
+
+	public void setEOK(Xmod_Exception xme) {
+		EOK = xme;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StateMachinePackage.XMOD_OPERATION__NAME, oldName,
+					name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getObjectTag() {
+		return objectTag;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public void setObjectTag(String newObjectTag) {
+		String oldObjectTag = objectTag;
+		objectTag = newObjectTag;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StateMachinePackage.XMOD_OPERATION__OBJECT_TAG,
+					oldObjectTag, objectTag));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<String> getParametersTag() {
+		if (parametersTag == null) {
+			parametersTag = new EDataTypeUniqueEList<String>(String.class, this,
+					StateMachinePackage.XMOD_OPERATION__PARAMETERS_TAG);
+		}
+		return parametersTag;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getReturnTag() {
+		return returnTag;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public void setReturnTag(String newReturnTag) {
+		String oldReturnTag = returnTag;
+		returnTag = newReturnTag;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StateMachinePackage.XMOD_OPERATION__RETURN_TAG,
+					oldReturnTag, returnTag));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<Xmod_Exception> getExceptions() {
+		if (exceptions == null) {
+			exceptions = new EObjectContainmentEList<Xmod_Exception>(Xmod_Exception.class, this,
+					StateMachinePackage.XMOD_OPERATION__EXCEPTIONS);
+		}
+		return exceptions;
+	}
+
+	@Override
+	public Xmod_Exception getException(Xmod_ExceptionKind kind) {
+		for (Xmod_Exception e : getExceptions())
+			if (e.getKind() == kind)
+				return e;
+		return null;
+	}
+
+	@Override
+	public Xmod_Exception getException(Xmod_ExceptionKind kind, String filter) {
+		for (Xmod_Exception e : getExceptions())
+			if (e.getKind() == kind && e.getFilter().equals(filter))
+				return e;
+		return null;
+	}
+
+	@Override
+	public void addException(Xmod_Exception xme) {
+		getExceptions().add(xme);
+	}
+
+	/**
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @generated NOT
+	*/
+	private static Method findHighestMethod(Class<?> cls, String methodName, Class<?>... paramClass) {
+
+		for (Class<?> iface : cls.getInterfaces()) {
+			Method ifaceMethod = findHighestMethod(iface, methodName, paramClass);
+			if (ifaceMethod != null)
+				return ifaceMethod;
+		}
+
+		if (cls.getSuperclass() != null) {
+			Method parentMethod = findHighestMethod(cls.getSuperclass(), methodName, paramClass);
+			if (parentMethod != null)
+				return parentMethod;
+		}
+
+		try {
+			Method method = cls.getMethod(methodName, paramClass);
+			return method;
+		} catch (NoSuchMethodException nsme) {
+			return null;
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Xmod_Exception callOperation() {
+
+		/* Init */
+		Object returnValue; // Returned object by the method
+		Class<?>[] parametersType = null;
+		Method m;
+		Object[] parameters = null;
+
+		/* Body */
+		if (getObjectTag() != null) { // check if the object on which the operation is being called has an annotation
+			// in case there are one or more parameters
+			try {
+				if (getParametersTag() != null) {
+					parametersType = new Class[getParametersTag().size()];
+					parameters = new Object[getParametersTag().size()];
+					// browsing of the list of parameters of the operation
+					for (int i = 0; i < getParametersTag().size(); i++) {
+						if (getParametersTag().get(i) != null) { // check if the item has an annotation
+							Object target = getTarget(getParametersTag().get(i), 0, 0);
+							parameters[i] = target;
+							parametersType[i] = target.getClass();
+						}
+					}
+				}
+
+				// dynamic invocation
+				Object owner = getTarget(getObjectTag(), 0, 0);
+				m = getMethod(owner, getName(), parametersType);
+				// if the method is static
+				if (Modifier.isStatic(m.getModifiers())) {
+					returnValue = m.invoke(null, parameters);
+					// if not
+				} else {
+					returnValue = m.invoke(owner, parameters);
+				}
+
+				// update of the hashmap
+				if (getReturnTag() != null) {
+					String[] couple = getReturnTag().split(TAG_SEPARATOR);
+					String[] chain = couple[1].split("\\.");
+
+					// is a model object
+					if (couple[0].equals(MODEL_TAG)) {
+						String targetPropertyName = chain[chain.length - 1];
+						Object target = getTarget(getReturnTag(), 0, -1);
+						Object targetProperty = getTarget(getReturnTag(), 0, 0);
+
+						// check if the object can be assigned with the returning type
+						if (!targetProperty.getClass().isAssignableFrom(returnValue.getClass()))
+							throw new Xmod_ReturnTypeNotMatchingException(returnValue.getClass().getSimpleName()
+									+ " isn't assignable to (" + targetProperty.getClass() + ")");
+
+						Method setter = getMethod(target, "set" + capitalize(targetPropertyName),
+								targetProperty.getClass());
+						setter.invoke(target, returnValue);
+					}
+					// is external to the model
+					else if (couple[0].equals(EXTERNAL_TAG)) {
+						stateMachine.util.StateMachineUtils.getExtMap().put(getReturnTag().split(":")[1], returnValue);
+					} else {
+						throw new Xmod_UnknownNamespaceException(couple[0]);
+					}
+				}
+			}
+
+			catch (Exception e) {
+				Exception savedException = e instanceof InvocationTargetException ? (Exception) e.getCause() : e;
+
+				stateMachine.util.StateMachineUtils.getExtMap().put(Xmod_ExceptionContext.CONTEXT_KEY,
+						new Xmod_ExceptionContext(savedException, getName(), (String[]) getParametersTag().toArray()));
+
+				Xmod_ExceptionKind kind;
+				if (e instanceof Xmod_UnknownNamespaceException)
+					kind = UNKNOWN_NAMESPACE;
+				else if (e instanceof Xmod_ObjectNotFoundException)
+					kind = OBJECT_NOT_FOUND;
+				else if (e instanceof Xmod_MethodNotFoundException)
+					kind = METHOD_NOT_FOUND;
+				else if (e instanceof Xmod_ParametersNotMatchingException)
+					kind = PARAMETERS_NOT_MATCHING;
+				else if (e instanceof Xmod_ReturnTypeNotMatchingException)
+					kind = RETURN_TYPE_NOT_MATCHING;
+				else if (e instanceof InvocationTargetException)
+					kind = METHOD_EXCEPTION;
+				else {
+					e.printStackTrace();
+					return null;
+				}
+
+				Xmod_Exception xme = kind == METHOD_EXCEPTION
+						? getException(kind, savedException.getClass().getSimpleName())
+						: getException(kind);
+				return xme == null ? getException(Xmod_ExceptionKind.OTHER) : xme;
+			}
+		}
+
+		return EOK;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case StateMachinePackage.XMOD_OPERATION__EXCEPTIONS:
+			return ((InternalEList<?>) getExceptions()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @generated NOT
+	*/
+	private static String capitalize(String s) {
+		return s.substring(0, 1).toUpperCase() + s.substring(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	private static Method getMethod(Object target, String methodName, Class<?>... paramsType)
+			throws Xmod_MethodNotFoundException, Xmod_ParametersNotMatchingException {
+		Class<?> owningClass = target.getClass();
+
+		List<Method> candidates = Arrays.stream(owningClass.getMethods()).filter(m -> m.getName().equals(methodName))
+				.collect(Collectors.toList());
+
+		if (candidates.isEmpty())
+			throw new Xmod_MethodNotFoundException(
+					"'" + methodName + "' in '" + target.getClass().getSimpleName() + "'");
+
+		for (Method m : candidates) {
+			Class<?>[] pt = m.getParameterTypes();
+			if (pt.length != paramsType.length)
+				continue;
+			boolean compatible = true;
+			for (int i = 0; i < pt.length; i++)
+				if (!pt[i].isAssignableFrom(paramsType[i])) {
+					compatible = false;
+					break;
+				}
+			if (compatible)
+				return m;
+		}
+
+		throw new Xmod_ParametersNotMatchingException(methodName + "("
+				+ Arrays.stream(paramsType).map(Class::getSimpleName).collect(Collectors.joining(", ")) + ")");
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the object targeted by this string, starting the search at "startOffset" and ending it at "endOffset" tokens before the last one.
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	private static Object getTarget(String params, int startOffset, int endOffset)
+			throws Xmod_UnknownNamespaceException, Xmod_ObjectNotFoundException, Xmod_MethodNotFoundException,
+			Xmod_ParametersNotMatchingException, InvocationTargetException, IllegalAccessException,
+			ClassNotFoundException, IllegalArgumentException, NoSuchMethodException, SecurityException,
+			InstantiationException, UnsupportedOperationException {
+		String[] couple = params.split(TAG_SEPARATOR, 2);
+
+		// is an orphan object to create
+		if (couple[0].equals(JAVA_TAG)) {
+			/*
+			int open = couple[1].indexOf('(');
+			int close = couple[1].indexOf(')');
+			String classStr = couple[1].substring(0,open);
+			String content = couple[1].substring(open + 1,close);
+			
+			String[] pStr = content.split(",");
+			int length = pStr.length;
+			Object[] parameters = new Object[length];
+			Class<?>[] parametersType = new Class<?>[length];
+			for (int i = 0; i < length; i++) {
+			    if (pStr[i].contains(":")) parameters[i] = getTarget(pStr[i],0,0);
+			    else parameters[i] = null; // TODO: possible valeur literale
+			    parametersType[i] = TypeResolver.tryUnbox(parameters[i].getClass());
+			}
+			
+			Class<?> classType = TypeResolver.resolve(classStr);
+			Constructor<?> constructor = classType.getConstructor(parametersType);
+			return constructor.newInstance(parameters);
+			*/
+			throw new UnsupportedOperationException("java name spaces are not supported yet");
+		}
+
+		// is a model object
+		if (couple[0].equals(MODEL_TAG)) {
+			String[] split = couple[1].split("\\.");
+			Map<String, Object> map = stateMachine.util.StateMachineUtils.getModelMap();
+			String chain = String.join(".", Arrays.copyOfRange(split, startOffset + 1, split.length + endOffset));
+
+			if (split[0].equals("this"))
+				return getDeepTarget(null, chain); // TODO: null -> parent
+
+			Object mappedTarget = map.get(split[0]);
+			if (mappedTarget == null)
+				throw new Xmod_ObjectNotFoundException(split[0]);
+			return getDeepTarget(mappedTarget, chain);
+		}
+
+		// is external to the model
+		if (couple[0].equals(EXTERNAL_TAG)) {
+			String[] split = couple[1].split("\\.");
+			Map<String, Object> map = stateMachine.util.StateMachineUtils.getExtMap();
+			String chain = String.join(".", Arrays.copyOfRange(split, startOffset + 1, split.length + endOffset));
+
+			Object mappedTarget = map.get(split[0]);
+			if (mappedTarget == null)
+				throw new Xmod_ObjectNotFoundException(split[0]);
+			return getDeepTarget(mappedTarget, chain);
+		}
+
+		// is unrecognized
+		throw new Xmod_UnknownNamespaceException(couple[0]);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@SuppressWarnings("unchecked")
+	private static Object getDeepTarget(Object target, String params)
+			throws Xmod_ObjectNotFoundException, Xmod_MethodNotFoundException, Xmod_ParametersNotMatchingException,
+			InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+		if (params == null || params.isEmpty())
+			return target;
+
+		String[] parts = params.split("\\.", 2);
+		String current = parts[0];
+		String remain = parts.length > 1 ? parts[1] : "";
+
+		if (current.contains("[")) {
+			int open = current.indexOf('[');
+			int close = current.indexOf(']');
+			String propertyName = current.substring(0, open);
+			String subpropertyName = current.substring(open + 1, close);
+
+			Method g = getMethod(target, "get" + capitalize(propertyName));
+			List<Object> list = (List<Object>) g.invoke(target);
+			target = null;
+			for (Object obj : list) {
+				if (obj instanceof Xmod_Element e) {
+					if (e.getXmod_id().equals(subpropertyName))
+						target = e;
+				}
+			}
+
+		} else {
+			Method g = getMethod(target, "get" + capitalize(current));
+			target = g.invoke(target);
+		}
+
+		if (target == null)
+			throw new Xmod_ObjectNotFoundException(current);
+		if (remain.isBlank())
+			return target;
+		return getDeepTarget(target, remain);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+		case StateMachinePackage.XMOD_OPERATION__NAME:
+			return getName();
+		case StateMachinePackage.XMOD_OPERATION__OBJECT_TAG:
+			return getObjectTag();
+		case StateMachinePackage.XMOD_OPERATION__PARAMETERS_TAG:
+			return getParametersTag();
+		case StateMachinePackage.XMOD_OPERATION__RETURN_TAG:
+			return getReturnTag();
+		case StateMachinePackage.XMOD_OPERATION__EXCEPTIONS:
+			return getExceptions();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+		case StateMachinePackage.XMOD_OPERATION__NAME:
+			setName((String) newValue);
+			return;
+		case StateMachinePackage.XMOD_OPERATION__OBJECT_TAG:
+			setObjectTag((String) newValue);
+			return;
+		case StateMachinePackage.XMOD_OPERATION__PARAMETERS_TAG:
+			getParametersTag().clear();
+			getParametersTag().addAll((Collection<? extends String>) newValue);
+			return;
+		case StateMachinePackage.XMOD_OPERATION__RETURN_TAG:
+			setReturnTag((String) newValue);
+			return;
+		case StateMachinePackage.XMOD_OPERATION__EXCEPTIONS:
+			getExceptions().clear();
+			getExceptions().addAll((Collection<? extends Xmod_Exception>) newValue);
+			return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+		case StateMachinePackage.XMOD_OPERATION__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case StateMachinePackage.XMOD_OPERATION__OBJECT_TAG:
+			setObjectTag(OBJECT_TAG_EDEFAULT);
+			return;
+		case StateMachinePackage.XMOD_OPERATION__PARAMETERS_TAG:
+			getParametersTag().clear();
+			return;
+		case StateMachinePackage.XMOD_OPERATION__RETURN_TAG:
+			setReturnTag(RETURN_TAG_EDEFAULT);
+			return;
+		case StateMachinePackage.XMOD_OPERATION__EXCEPTIONS:
+			getExceptions().clear();
+			return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+		case StateMachinePackage.XMOD_OPERATION__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case StateMachinePackage.XMOD_OPERATION__OBJECT_TAG:
+			return OBJECT_TAG_EDEFAULT == null ? objectTag != null : !OBJECT_TAG_EDEFAULT.equals(objectTag);
+		case StateMachinePackage.XMOD_OPERATION__PARAMETERS_TAG:
+			return parametersTag != null && !parametersTag.isEmpty();
+		case StateMachinePackage.XMOD_OPERATION__RETURN_TAG:
+			return RETURN_TAG_EDEFAULT == null ? returnTag != null : !RETURN_TAG_EDEFAULT.equals(returnTag);
+		case StateMachinePackage.XMOD_OPERATION__EXCEPTIONS:
+			return exceptions != null && !exceptions.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+		case StateMachinePackage.XMOD_OPERATION___CALL_OPERATION:
+			return callOperation();
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", objectTag: ");
+		result.append(objectTag);
+		result.append(", parametersTag: ");
+		result.append(parametersTag);
+		result.append(", returnTag: ");
+		result.append(returnTag);
+		result.append(')');
+		return result.toString();
+	}
+
+} //Xmod_OperationImpl

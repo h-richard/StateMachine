@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/StateMachine/src-gen" creationIcons="false" editDirectory="/StateMachine.edit/src-gen"
+    editorDirectory="/StateMachine.editor/src-gen" modelPluginID="StateMachine" modelName="StateMachine"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>stateMachine.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="StateMachine" disposableProviderFactory="true" ecorePackage="stateMachine.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="stateMachine.ecore#//Xmod_ExceptionReaction">
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionReaction/continue"/>
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionReaction/skip"/>
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionReaction/exit"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="stateMachine.ecore#//Xmod_ExceptionKind">
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionKind/ok"/>
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionKind/unknownNamespace"/>
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionKind/objectNotFound"/>
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionKind/methodNotFound"/>
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionKind/parametersNotMatching"/>
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionKind/returnTypeNotMatching"/>
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionKind/methodException"/>
+      <genEnumLiterals ecoreEnumLiteral="stateMachine.ecore#//Xmod_ExceptionKind/other"/>
+    </genEnums>
+    <genClasses ecoreClass="stateMachine.ecore#//StateMachine">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stateMachine.ecore#//StateMachine/events"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stateMachine.ecore#//StateMachine/transitions"/>
+    </genClasses>
+    <genClasses ecoreClass="stateMachine.ecore#//State">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference stateMachine.ecore#//State/container"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//State/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//State/isActive"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stateMachine.ecore#//State/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="stateMachine.ecore#//CompositeState">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stateMachine.ecore#//CompositeState/states"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stateMachine.ecore#//CompositeState/initialState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stateMachine.ecore#//CompositeState/historyState"/>
+    </genClasses>
+    <genClasses ecoreClass="stateMachine.ecore#//PseudoState">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stateMachine.ecore#//PseudoState/referencedState"/>
+    </genClasses>
+    <genClasses ecoreClass="stateMachine.ecore#//InitialState"/>
+    <genClasses ecoreClass="stateMachine.ecore#//HistoryState"/>
+    <genClasses ecoreClass="stateMachine.ecore#//Transition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stateMachine.ecore#//Transition/event"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stateMachine.ecore#//Transition/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference stateMachine.ecore#//Transition/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stateMachine.ecore#//Transition/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="stateMachine.ecore#//Event">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//Event/name"/>
+    </genClasses>
+    <genClasses ecoreClass="stateMachine.ecore#//Xmod_Exception">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//Xmod_Exception/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//Xmod_Exception/filter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//Xmod_Exception/reaction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stateMachine.ecore#//Xmod_Exception/calledOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="stateMachine.ecore#//Xmod_Action">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//Xmod_Action/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stateMachine.ecore#//Xmod_Action/operations"/>
+      <genOperations ecoreOperation="stateMachine.ecore#//Xmod_Action/execute"/>
+    </genClasses>
+    <genClasses ecoreClass="stateMachine.ecore#//Xmod_Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//Xmod_Operation/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//Xmod_Operation/objectTag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//Xmod_Operation/parametersTag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//Xmod_Operation/returnTag"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference stateMachine.ecore#//Xmod_Operation/exceptions"/>
+      <genOperations ecoreOperation="stateMachine.ecore#//Xmod_Operation/callOperation"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="stateMachine.ecore#//Xmod_Element">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stateMachine.ecore#//Xmod_Element/xmod_id"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
