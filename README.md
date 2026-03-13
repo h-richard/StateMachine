@@ -2,8 +2,12 @@ This project implements the xDSL of a standard hierarchical UML state machine.
 It supports composite states and history states, yet no parallel states.
 The metamodel has been edited with [Xmodeling Studio](https://github.com/h-richard/Xmodeling_Studio) allowing it to define business actions on states (entry, do, exit) and transitions.
 
-Execution is launched using the StateMachineController.java in StateMachine/src
-This project comes with an example .stm models in StateMachine/model/ :
+Execution is launched using the StateMachineController.java in StateMachine/src/
+Events are entered in the console and processed by the state machine.  
+
+This project comes with example .stm models in StateMachine/model/  
+You may change the interpreted model in the StateMachineController (value of the constant "MODEL")  
+Each model has an associated service class in StateMachine/src/ext/, which are already linked up in the StateMachineController  
 
 ### Microwave (microwave.stm)
 A state chart of a functional microwave with two composite states (open/close) and a history state in 'close'.
