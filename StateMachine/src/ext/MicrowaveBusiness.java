@@ -1,8 +1,11 @@
+package ext;
 public class MicrowaveBusiness {
 	
 	private boolean lightOn = false;
 	private boolean doorOpen = false;
 	private boolean magnetronOn = false;
+	
+	private int a = 1;
 	
 	public void turnOnlight() {
 		lightOn = true;
@@ -26,6 +29,14 @@ public class MicrowaveBusiness {
 	
 	public void turnOffMagnetron() {
 		magnetronOn = false;
+	}
+	
+	public boolean guard1() {
+		return true;
+	}
+	
+	public boolean guard2() {
+		return false;
 	}
 	
 	public String toString() {

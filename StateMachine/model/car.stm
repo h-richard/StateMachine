@@ -1,0 +1,35 @@
+StateMachine car {
+	states {
+		State stopped { Action "onDo" { call stop() on "ext:car"; }}
+		CompositeState moving {
+			states {
+				State decelerating { Action "onDo" { call slowDown() on "ext:car"; }}
+				State accelerating { Action "onDo" { call speedUp() on "ext:car"; }}
+				State maximum { Action "onDo" { call maxReached() on "ext:car"; }}
+				InitialState init references accelerating
+			}
+			starts with init
+		}
+		InitialState init references stopped
+	}
+	starts with init
+	events {
+		Event speedUp,
+		Event slowDown
+	}
+	transitions {
+		Transition from stopped to moving on speedUp,
+		Transition from moving to stopped on slowDown { 
+			Action "guards" { call isSpeed10() on "ext:car" returns "ext:guardsResult"; }
+		},
+		Transition from moving to decelerating on slowDown {
+			Action "guards" { call isSpeedNot10() on "ext:car" returns "ext:guardsResult"; }
+		},
+		Transition from moving to accelerating on speedUp {
+			Action "guards" { call isSpeedNot90() on "ext:car" returns "ext:guardsResult"; }
+		},
+		Transition from moving to maximum on speedUp {
+			Action "guards" { call isSpeed90() on "ext:car" returns "ext:guardsResult"; }
+		}
+	}
+}

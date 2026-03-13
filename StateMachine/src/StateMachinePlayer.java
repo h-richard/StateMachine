@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
+
+import util.Font;
 
 import stateMachine.CompositeState;
 import stateMachine.Event;
@@ -20,6 +23,10 @@ public class StateMachinePlayer {
 	public StateMachinePlayer(StateMachine stm) {
 		STM = stm;
 		runningThreads = new HashMap<>();
+	}
+	
+	public Set<Thread> getRunningThreads() {
+		return runningThreads.keySet();
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,7 +87,7 @@ public class StateMachinePlayer {
 	public void processEvent(String event) {
 		Transition trans = this.getTriggerableTransition(event);
         if (trans == null) {
-            System.out.println("No valid transition found for : \"" + event + "\"");
+            System.out.println(Font.bold("No valid transition found for : '" + event + "'"));
             return;
         }
         onTransition(trans);
@@ -95,7 +102,7 @@ public class StateMachinePlayer {
 		}
 		
         updateStateHierarchy(target);
-        System.out.println(trans.getSource().getName() + " -> " + trans.getTarget().getName());
+        System.out.println(Font.bold(trans.getSource().getName() + " -> " + trans.getTarget().getName()));
         
         for (State s : getActiveStates(STM)) onDo(s);
 	}
@@ -107,10 +114,9 @@ public class StateMachinePlayer {
 
 	    while (activeState != null) {
 	        for (Transition t : STM.getTransitions()) {
-	            if (t.getEvent().getName().equals(event)
-	                    && t.getSource() == activeState
-	                    && evaluateGuards(t)) {
-	                return t;
+	            if (t.getEvent().getName().equals(event) && t.getSource().equals(activeState)) {
+	            	if (evaluateGuards(t)) return t;
+	            	else System.out.println(t.getSource().getName() + " -> " + t.getTarget().getName() + Font.red(" guards denied"));
 	            }
 	        }
 	        activeState = activeState.getContainer();
@@ -220,7 +226,7 @@ public class StateMachinePlayer {
 		for (Xmod_Action action : t.getActions())
 			if (action.getXmod_id().equals("guards")) {
 				action.execute();
-				return (boolean) StateMachineUtils.getExtMap().get("lastGuardsResult");
+				return (boolean) StateMachineUtils.getExtMap().get("guardsResult");
 			}
 		return true;
 	}

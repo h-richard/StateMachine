@@ -34,9 +34,15 @@ StateMachine microwave {
 		Event power
 	}
 	transitions {
-		Transition from closed to open on doorOpen { Action "onTransition" { call openDoor() on "ext:business"; }},
+		Transition from closed to open on doorOpen { 
+			Action "onTransition" { call openDoor() on "ext:business"; },
+			Action "guards" { call guard1() on "ext:business" returns "ext:guardsResult"; }
+		},
 		Transition from open to closed on doorClose { Action "onTransition" { call closeDoor() on "ext:business"; }},
-		Transition from baking to paused on doorOpen { Action "onTransition" { call openDoor() on "ext:business"; }},
+		Transition from baking to paused on doorOpen { 
+			Action "onTransition" { call openDoor() on "ext:business"; },
+			Action "guards" { call guard2() on "ext:business" returns "ext:guardsResult"; }
+		},
 		Transition from c_off to baking on power,
 		Transition from baking to c_off on power
 	}

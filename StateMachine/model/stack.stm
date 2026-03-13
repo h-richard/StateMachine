@@ -1,0 +1,28 @@
+StateMachine stack {
+	states {
+		State Empty
+		State NotEmpty
+		InitialState init references Empty
+	}
+	starts with init
+	events {
+		Event push,
+		Event pop
+	}
+	transitions {
+		Transition from Empty to NotEmpty on push { 
+			Action "onTransition" { call pushAction("ext:eventValue") on "ext:stack"; }
+		},
+		Transition from NotEmpty to Empty on pop {
+			Action "guards" { call onlyOne() on "ext:stack" returns "ext:guardsResult"; },
+			Action "onTransition" { call popAction() on "ext:stack" returns "ext:popValue"; }
+		},
+		Transition from NotEmpty to NotEmpty on push { 
+			Action "onTransition" { call pushAction("ext:eventValue") on "ext:stack"; }
+		},
+		Transition from NotEmpty to NotEmpty on pop {
+			Action "guards" { call moreThanOne() on "ext:stack" returns "ext:guardsResult"; },
+			Action "onTransition" { call popAction() on "ext:stack" returns "ext:popValue"; }
+		}
+	}
+}
