@@ -1,5 +1,5 @@
 package ext;
-public class MicrowaveBusiness {
+public class Microwave {
 	
 	private boolean lightOn = false;
 	private boolean doorOpen = false;

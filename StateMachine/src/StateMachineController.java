@@ -7,17 +7,17 @@ import ext.*;
 public class StateMachineController {
 	
 	private static final String PATH = "model/";
-	private static final String MODEL = "car.stm";
+	private static final String MODEL = "microwave.stm";
 	
 	public static void main(String[] args) {
-		MicrowaveBusiness business = new MicrowaveBusiness();
-		StateMachineUtils.putExtMap("business", business);
+		Microwave microwave = new Microwave();
+		StateMachineUtils.putExtMap("microwave", microwave);
 		
-		//Stack stack = new Stack();
-		//StateMachineUtils.putExtMap("stack", stack);
+		Stack stack = new Stack();
+		StateMachineUtils.putExtMap("stack", stack);
 		
-		//Car car = new Car();
-		//StateMachineUtils.putExtMap("car", car);
+		Car car = new Car();
+		StateMachineUtils.putExtMap("car", car);
 		
 		StateMachine stm = StateMachineUtils.loadStateMachineFromStateMachineModel(PATH + MODEL);
 		StateMachinePlayer player = new StateMachinePlayer(stm);
@@ -33,7 +33,7 @@ public class StateMachineController {
 				catch(InterruptedException ie) { ie.printStackTrace(); }
 			}
 			System.out.println("--------------------------------------------");
-			System.out.println(business.toString());
+			System.out.println(microwave.toString());
 			//System.out.println(stack.toString());
 			//System.out.println(car.toString());
 			player.printActiveState();
